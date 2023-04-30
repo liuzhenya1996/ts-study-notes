@@ -6,7 +6,7 @@ const userIsMale: boolean = true
 // 2.数组类型
 const numberArrEmpty: number[] = [] // 基础类型后直接加 [], 支持空数组
 const stringArr: string[] = ['a', 'b', 'c'] // 基础类型后直接加 []
-const numberOrStringArr: number[]|string[] = [1, 2, 3] // 使用 | ，来兼容2个及以上的不同类型
+const numberOrStringArr: (number|string)[] = [1, '2', 3] // 使用 | ，来兼容2个及以上的不同类型，实际上这就是联合类型的概念
 const booleanArr: Array<boolean> = [true] // 使用 Array 关键字声明，通过 <> 传入类型
 const booleanOrStringArr: Array<boolean|string> = [true, '234']
 
@@ -112,7 +112,7 @@ const a: '123'|123 = 123
 // 在 ts 里，字面量类型中默认不区分 null 和 undefined，这是一个默认的缺陷，一般我们需要指定 tsconfig.compilerOptions.strictNullChecks 为 true，来规避这样的缺陷，注意喽，这么配置过后，第 10 里的 dom1 和 dom2 就会非常严谨了，编辑器会主动判断出你有可能是 null 类型
 
 // 12. void 
-// void 最为一个函数的返回值类型，当配置此类型时，该函数不得返回除了 undefined 之外的任何类型，类似与定义了判断类型为 undefined
+// void 作为一个函数的返回值类型，当配置此类型时，该函数不得返回除了 undefined 之外的任何类型，类似与定义了判断类型为 undefined
 function returnUndefined (params: number): void {
   return undefined
 }
