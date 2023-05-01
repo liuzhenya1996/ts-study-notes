@@ -43,7 +43,7 @@ type messageType = GetMessageType<inter4> // 这个语句可以看作函数写�
 const messageString: messageType = '123'
 
 
-// 说个概念： infer
+// 新概念： infer
 // infer 可以理解为函数出参类型指向，一般和 extends 配合使用，比如，一个函数的出参是什么类型我不知道，也不想知道，我只想继承这个类型用作类型判断，那么
 type GetReturnType<T> = T extends () => infer returnType ? returnType : never // 意思就是如果类型入参是函数，则得到函数出参的类型，否则得到 never
 type FuncReturnString = () => string
