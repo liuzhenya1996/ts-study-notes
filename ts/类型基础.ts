@@ -73,6 +73,7 @@ interface Person { // 重复声明一个接口，后续声明的属性将会补�
 interface Student extends Person { // 继承接口内的所有属性，并允许新加入自己的属性
   class: string
 }
+// 如果需要继承多个接口，则多个接口之间用逗号连接 // interface a extends b, c, d
 const student: Student = {
   name: '李子明',
   age: 9,
