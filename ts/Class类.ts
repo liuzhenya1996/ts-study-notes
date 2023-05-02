@@ -109,3 +109,14 @@ class Class050208 {
 // const class050206 = new Class050208() // 不允许了噢
 const class050207 = Class050208.getClassInter() // 生成了一个实例
 const class050208 = Class050208.getClassInter() // 实例已经存在了，直接返回生成好的
+
+
+// readonly 可以定义一个只读的属性
+class Class050209 {
+  readonly name: string
+  constructor (name: string) {
+    this.name = name // 只读属性限制的是实例的修改，不会限制类内部的修改
+  }
+}
+const class050209 = new Class050209('string1')
+// class050209.name = 'string2' // 实例无法修改只读属性噢
