@@ -85,3 +85,27 @@ const class050204 = new Class050206('liuzhenya')
 console.log('class050204', class050204.getName) // 注意噢，get 功能提供的其实要看做属性，不能写成 getName()
 class050204.setName ='liuzhenya' // 注意噢，set 功能提供的也要看做属性，不能写成 setName(’liuzhenya)
 console.log('class050204-set', class050204.getName) // 注意噢，get 功能提供的其实要看做属性，不能写成 getName()
+
+// 静态属性 static，static 声明的属性仅属于类本身，外部实现实例中将不存在这个属性
+class Class050207 {
+  static name1 = 'static name';
+}
+const class050205 = new Class050207()
+// console.log(class050205.name1) // 不存在噢
+console.log(Class050207.name1) // 直接从 class 中访问
+
+// 实现需求，希望一个的类只能被 new 一次，后续不能再 new 了，只能用第一次 new 出来的
+class Class050208 {
+  private static classInter: Class050208 // 声明一个内部静态属性 classInter，类型为 Class050208
+  private constructor () {} // 构造函数私有后，外部将不能再通过 new 关键字生成此类的实例
+  public static getClassInter () {
+    if (!this.classInter) { // classInter 是否有实例了，注意刚刚只是声明了它的类型，没有直接赋值噢
+      this.classInter = new Class050208() // 没有实例就生成一下
+    } else {
+      return this.classInter // 有实例了就直接返回
+    }
+  }
+}
+// const class050206 = new Class050208() // 不允许了噢
+const class050207 = Class050208.getClassInter() // 生成了一个实例
+const class050208 = Class050208.getClassInter() // 实例已经存在了，直接返回生成好的
