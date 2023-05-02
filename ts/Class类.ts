@@ -65,8 +65,23 @@ console.log('class050202', class050202.name)
 // 对于拥有构造函数的 class，其子类如果也有构造函数，那么子类的构造函数内必须先调用一下 super() 把父类的功能完整的继承过来
 class Class050205 extends Class050204 {
   constructor (public age: number) { // 这里相当于声明了一个内部的属性 age，并且实现 Class050205 时可以传入 age 实现 age 的赋值
-    super('name1') // 这里 super() 就相当于调用了父类中的构造函数
+    super('name1') // 这里 super() 就相当于调用了父类中的构造函数，如刚刚所说，这是必须的语句，不能少
   }
 }
 const class050203 = new Class050205(23)
 console.log('class050203', class050203.age, class050203.name)
+
+// 类中的 Getter 和 Setter
+// 现在有一个类，内部属性是私密的
+class Class050206 {
+  constructor (private name: string) {} // 我们知道外部无法直接读取 name，我们可以使用 get 功能来实现读取内部属性
+  get getName () { return this.name }
+  // getName () { return this.name } // 当然使用这个方式也可以，但是取值还是建议使用 class 官方给的 get 功能
+  set setName (name: string) { // 也可以用 set 功能实现内部私密属性的修改
+    this.name = name + ' form set'
+  }
+}
+const class050204 = new Class050206('liuzhenya')
+console.log('class050204', class050204.getName) // 注意噢，get 功能提供的其实要看做属性，不能写成 getName()
+class050204.setName ='liuzhenya' // 注意噢，set 功能提供的也要看做属性，不能写成 setName(’liuzhenya)
+console.log('class050204-set', class050204.getName) // 注意噢，get 功能提供的其实要看做属性，不能写成 getName()
