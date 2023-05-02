@@ -20,3 +20,28 @@ class Student1 extends Person1 { // 类的继承和 interface 的继承语法类
 const student1 = new Student1() // Class 的实现需要关键字 new
 console.log(student1.getName())
 console.log(student1.getParentProperty())
+
+
+// Class 中的属性有 public、private、protected 三种作用域修饰符
+/**
+ * public 为公有的属性，在所有地方都可以直接访问，如果声明 Class 时没有指定作用域，则默认为 public
+ * protected 仅限 Class 内部和其子类的内部访问，外部无法访问
+ * private 仅限 Class 内部访问，其余所有地方都无法访问
+*/
+
+class Class050201 {
+  private name: string
+  protected age: number
+  public getName () {
+    return this.name
+  }
+}
+class Class050202 extends Class050201 {
+  getParName () {
+    // return this.name // 无法访问
+    return this.age // 子类可以访问父类中的 protected age
+  }
+}
+const class050201 = new Class050201()
+// console.log(class050201.name) // 无法访问
+console.log(class050201.getName()) // public getName 可以自由访问
