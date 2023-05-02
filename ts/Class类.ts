@@ -33,7 +33,7 @@ class Class050201 {
   private name: string
   protected age: number
   public getName () {
-    return this.name
+    return 123
   }
 }
 class Class050202 extends Class050201 {
@@ -45,3 +45,19 @@ class Class050202 extends Class050201 {
 const class050201 = new Class050201()
 // console.log(class050201.name) // 无法访问
 console.log(class050201.getName()) // public getName 可以自由访问
+
+
+// 构造函数及其相关的 Class 内部的属性赋值简写
+// constructor 是 Class 内部默认存在的一个函数，该函数在 Class 生成的一刻会自动执行
+class Class050203 {
+  name: string
+  constructor (name: string) {
+    this.name = name
+  }
+}
+// 上面这个 class 的构造函数内，实现了将内部的 公有属性 name 赋值的功能，但是这里有个简写的方法
+class Class050204 {
+  constructor (public name: string) {} // 给入参声明作用域后，就相当于上面那一大坨的功能
+}
+const class050202 = new Class050204('1')
+console.log('class050202', class050202.name)
