@@ -61,3 +61,12 @@ class Class050204 {
 }
 const class050202 = new Class050204('1')
 console.log('class050202', class050202.name)
+
+// 对于拥有构造函数的 class，其子类如果也有构造函数，那么子类的构造函数内必须先调用一下 super() 把父类的功能完整的继承过来
+class Class050205 extends Class050204 {
+  constructor (public age: number) { // 这里相当于声明了一个内部的属性 age，并且实现 Class050205 时可以传入 age 实现 age 的赋值
+    super('name1') // 这里 super() 就相当于调用了父类中的构造函数
+  }
+}
+const class050203 = new Class050205(23)
+console.log('class050203', class050203.age, class050203.name)
