@@ -40,3 +40,8 @@ function func050403 (par1: Class050401 | object, par2: Class050401 | object) {
     console.log(par1.num + par2.num)
   }
 }
+// 也可以定义一个类型，继承 Class050401，那么 inter050403 类型中就必然有 Class050401 内部的属性 num
+interface inter050403 extends Class050401 {}
+function func050404 (par1: Class050401 | inter050403, par2: Class050401 | inter050403) {
+  console.log(par1.num + par2.num) // 这样 par1 和 par2 无论是 Class050401 还是 inter050403，其内部都有属性 num 可以拿来用了
+}
