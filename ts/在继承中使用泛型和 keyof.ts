@@ -25,7 +25,7 @@ const p2Obj: p2 = {
 function func050103 (params1: p2, key: string) {
   // console.log(params1[key]) // 这里会报错，因为 key 是 string，不一定是 p2 中的属性，所以有潜在风险
 }
-function func050104<T extends keyof p2> (params1: p2, key: T) { // 泛型继承 keyof p2，表示 T 是 p2 中的属性名类型
+function func050104<T extends keyof p2> (params1: p2, key: T) { // 泛型继承 keyof p2，表示 T 是 p2 中的属性名，其实我们可以把它理解成字面量类型，即 'name' | 'age'
   console.log(params1[key])
 }
 func050104(p2Obj, 'name')
