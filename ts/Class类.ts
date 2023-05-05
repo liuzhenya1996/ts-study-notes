@@ -101,9 +101,8 @@ class Class050208 {
   public static getClassInter () {
     if (!this.classInter) { // classInter 是否有实例了，注意刚刚只是声明了它的类型，没有直接赋值噢
       this.classInter = new Class050208() // 没有实例就生成一下
-    } else {
-      return this.classInter // 有实例了就直接返回
     }
+    return this.classInter // 有实例了就直接返回
   }
 }
 // const class050206 = new Class050208() // 不允许了噢
