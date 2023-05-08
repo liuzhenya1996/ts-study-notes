@@ -53,6 +53,15 @@ interface Array1<Type> {
 // 指定了每一项元素的类型的数组，叫做元组
 type tuple = [number, string]
 const tuple1: tuple = [1, '2']
+// 元组越界：元组支持继续扩充更多的元素，除了前面几项已经声明好的类型的元素必须按照类型要求实现外，越界之外的数组元素类型为前几种类型的联合类型
+tuple1.push(3)
+tuple1.push('4')
+console.log(tuple1) // => [ 1, '2', 3, '4' ]
+console.log(tuple1.length) // => 4
+console.log(tuple1[0]) // => 1
+console.log(tuple1[1]) // => '2'
+// console.log(tuple1[2]) // => 但是需要注意，越界之外的元素无法精准读取，会直接报红
+// console.log(tuple1[3]) // => 但是需要注意，越界之外的元素无法精准读取，会直接报红 => 因此实际中并不建议对元组实现越界之外的元素，意义不大
 
 // 元组支持 readonly
 type tupleReadyOnly = readonly [number, string]
