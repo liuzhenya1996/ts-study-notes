@@ -32,3 +32,8 @@ function fucn050801 (par1: number, par2: number, par3?: number) {
 // function fucn050802 (par1: number, par2?: number, par3: number) { // 必选参数不能位于可选参数后
 //   return par1 + (par2 || 0) + par3
 // }
+
+// 5.使用 const 声明函数时，有简约写法
+const fucn050803: (par1: number) => number = (par1) => par1
+// 以上可简约为以下
+const fucn050804 = (par1: number): number => par1
