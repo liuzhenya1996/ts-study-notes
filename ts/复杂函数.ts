@@ -23,3 +23,12 @@ function function1 (params1: string, params2?: string) {
   if (typeof params2 === 'string') return params2.length + 2 // 这里两个茶树必须要要上其中一个，否则就报红第二次函数声明没有实现
   else return params1 // 这里貌似必须要用上 params1 这个入参，否则就报红说第一次的函数声明没有实现
 }
+
+// 4.函数的入参允许可选
+function fucn050801 (par1: number, par2: number, par3?: number) {
+  return par1 + par2 + (par3 || 0)
+}
+// 可选参数必须放在最后，否则会报红
+// function fucn050802 (par1: number, par2?: number, par3: number) { // 必选参数不能位于可选参数后
+//   return par1 + (par2 || 0) + par3
+// }
